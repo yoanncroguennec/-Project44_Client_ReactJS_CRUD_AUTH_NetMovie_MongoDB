@@ -202,7 +202,7 @@ export default function Featured() {
             background: "rgba(0, 0, 0, 0.4)",
             borderRadius: "25px",
             padding: "50px",
-            width: `${matches ? "450px" : "700px"}`,
+            width: `${matches ? "350px" : "700px"}`,
           }}
         >
           <Typography
