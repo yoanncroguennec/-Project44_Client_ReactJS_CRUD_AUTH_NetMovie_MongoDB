@@ -23,7 +23,7 @@ export default function Navbar({ id_Of_ConnectedUser, token, handleTokenAndId })
   return (
     <div className={`nav ${isScrolled && "navbarBlack"}`}>
       <Link
-        to='/movies'
+        to='/'
         style={{
           alignItems: "center",
           justifyContent: "center",

@@ -123,7 +123,11 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
             watch={watch}
           />
           <TypoTitle variant={matches ? "h6" : "h5"}>
-            {name} ({year} - {country})
+            {name} ({year} - {country} -{" "}
+            {production_company
+              ? `Société de Production : ${production_company}`
+              : ""}
+            )
           </TypoTitle>
           <Typography variant='body1'>
             <strong>Réalisateurs :</strong> {realisators}
@@ -141,7 +145,6 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
             dangerouslySetInnerHTML={{
               __html: `${truncateDesc(desc)}`,
             }}
-            // style={{ fontSize: "18px", marginBottom: "15px" }}
           />
 
           <BoxTrailer_MovieLink>
@@ -150,13 +153,9 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
               playing={false}
               controls={true}
               height={250}
-              width={450}
-              style={StylesTrailer}
+              width={350}
+              style={{ width: `${matches ? "300px" : "500px"}` }}
             />
-
-            {production_company
-              ? `Société de Production : ${production_company}`
-              : ""}
 
             {/* <VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm
               id_Of_ConnectedUser={id_Of_ConnectedUser}
@@ -169,7 +168,11 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
                   // height='320px'
                   display='block'
                   position='relative'
-                  styles={{ margin: "0 auto", height: "320px", width: "350px" }}
+                  styles={{
+                    margin: "0 auto",
+                    height: "320px",
+                    width: `${matches ? "300px" : "500px"}`,
+                  }}
                 />
               ) : (
                 <Typography>Désolé, pas de lien du Film 😥</Typography>

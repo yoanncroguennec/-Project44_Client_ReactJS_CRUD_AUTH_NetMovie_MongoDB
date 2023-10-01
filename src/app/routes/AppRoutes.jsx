@@ -10,7 +10,6 @@ import {
 } from "../pages";
 // Layouts
 import { AppLayout } from "../components/layouts";
-import Index from "../pages/movies/movie/Index";
 
 
 export default function Router() {
