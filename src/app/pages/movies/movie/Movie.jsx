@@ -1,23 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import Iframe from "react-iframe";
-import axios from "axios";
-import { Typography } from "@mui/material";
-// ICONS
+// STYLES
 import {
-  ImgMoviePoster,
-  BoxTitleDescMovie,
-  BoxInfosAboutTheMovie,
-  BoxTitleYearCountry_BooleanIfMovieViewed_Rating,
-  TypoTitleYearCountry,
+  BoxListMovies,
+  RootListMovies,
+  TypoTitle,
+  BoxNoDescription,
   StylesTrailer,
 } from "./StylesMovie";
-import { BreadcrumbsMovie } from "../../../components/layouts";
+import { Typography, useTheme, useMediaQuery, styled, Box } from "@mui/material";
 import BooleanIfMovieViewed_Rating from "../../../components/common/movies/BooleanIfMovieViewed_Rating";
-import { BoxMovieGenre } from "../../../components/common";
+// import { BoxMovieGenre } from "../../../components/common";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { BreadcrumbsMovie } from "../../../components/utils";
+import VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm from "./VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm";
 
-export default function Movie({ token }) {
+export default function Movie({ token, id_Of_ConnectedUser }) {
   const params = useParams();
 
   const [data, setData] = useState({});
@@ -51,27 +51,103 @@ export default function Movie({ token }) {
     rating,
   } = data;
 
+  // console.log(movies);
+  function truncateActors(str) {
+    return str.length > 10 ? str.substring(0, 55) + "..." : str;
+  }
+  function truncateDesc(str) {
+    return str.length > 10 ? str.substring(0, 150) + "..." : str;
+  }
+
+  //////////////////// RESPONSIVE ////////////////////
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+  //////////////////// STYLES ////////////////////
+  const RootListMovies = styled(Box)(({ theme }) => ({
+    background: "#f1f1f1",
+    borderRadius: "10px",
+    boxShadow: "5px 5px 15px rgba(0,0,0,0.3)",
+    margin: "0 auto",
+    maxWidth: `${token ? "1200px" : "400px"}`,
+    padding: "30px",
+    width: "100%",
+    "&::after": {
+      content: "''",
+      clear: "both",
+      display: "block",
+    },
+    [theme.breakpoints.down("sm")]: {
+      width: "70%",
+    },
+  }));
+
+  const styleImg = {
+    borderRadius: "50%",
+    boxShadow: "5px 5px 15px rgba(0,0,0,0.3)",
+    border: "8px solid #000",
+    float: "left",
+    height: `${matches ? "100px" : "220px"}`,
+    margin: "0 20px 5px 0",
+    shapeOutside: "margin-box",
+    width: `${matches ? "100px" : "220px"}`,
+  };
+
+  //////////////////// RETURN ////////////////////
+
   return isLoading ? (
     <>....</>
   ) : (
     <>
       <BreadcrumbsMovie />
-      <BoxTitleDescMovie>
-        <img alt='movie' src={img} style={ImgMoviePoster} />
-        <BoxInfosAboutTheMovie>
-          <div>
-            <BoxTitleYearCountry_BooleanIfMovieViewed_Rating>
-              <TypoTitleYearCountry variant='h5'>
-                {name} ({year} - {country})
-              </TypoTitleYearCountry>
-              <BooleanIfMovieViewed_Rating
-                rating={rating}
-                favorite={favorite}
-                watch={watch}
-              />
-            </BoxTitleYearCountry_BooleanIfMovieViewed_Rating>
+      <BoxListMovies>
+        <RootListMovies token={token}>
+          <img
+            alt='movie'
+            src={img}
+            height={1550}
+            style={styleImg}
+            width={1550}
+          />
+          <BooleanIfMovieViewed_Rating
+            rating={rating}
+            favorite={favorite}
+            watch={watch}
+          />
+          <TypoTitle variant={matches ? "h6" : "h5"}>
+            {name} ({year} - {country})
+          </TypoTitle>
+          <Typography variant='body1'>
+            <strong>Réalisateurs :</strong> {realisators}
+          </Typography>
+          <Typography variant='body1'>
+            <strong>Acteurs :</strong> {actors}
+          </Typography>
+          {/* <BoxMovieGenre genre={genre} /> */}
+          {desc === "" && (
+            <BoxNoDescription>
+              <Typography variant='h6'> Pas de description</Typography>
+            </BoxNoDescription>
+          )}
+          <div
+            dangerouslySetInnerHTML={{
+              __html: `${truncateDesc(desc)}`,
+            }}
+            // style={{ fontSize: "18px", marginBottom: "15px" }}
+          />
+
+          <div
+            style={{
+              alignItems: "center",
+              display: "flex",
+              flexWrap: "nowrap",
+              justifyContent: "space-between",
+              marginTop: "55px",
+            }}
+          >
             <ReactPlayer
               url={trailer}
+              playing={false}
               controls={true}
               height={250}
               width={450}
@@ -81,33 +157,29 @@ export default function Movie({ token }) {
             {production_company
               ? `Société de Production : ${production_company}`
               : ""}
-            <br />
-          </div>
-          <Typography variant='body1'>
-            <strong>Réalisateurs :</strong> {realisators}
-          </Typography>
-          <Typography variant='body1'>
-            <strong>Acteurs :</strong> {actors}
-          </Typography>
-          <BoxMovieGenre genre={genre} />
-          <div
-            dangerouslySetInnerHTML={{ __html: `${desc}` }}
-            style={{ fontSize: "18px", marginBottom: "15px" }}
-          />
-          {token ? (
-            <Iframe
-              url={movieLink}
-              width='550px'
-              height='320px'
-              display='block'
-              position='relative'
-              styles={{ margin: "0 auto" }}
+
+            <VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm
+              id_Of_ConnectedUser={id_Of_ConnectedUser}
             />
-          ) : (
-            <></>
-          )}
-        </BoxInfosAboutTheMovie>
-      </BoxTitleDescMovie>
+            {token ? (
+              movieLink ? (
+                <Iframe
+                  url={movieLink}
+                  width='550px'
+                  height='320px'
+                  display='block'
+                  position='relative'
+                  styles={{ margin: "0 auto" }}
+                />
+              ) : (
+                <Typography>Désolé, pas de lien du Film 😥</Typography>
+              )
+            ) : (
+              <></>
+            )}
+          </div>
+        </RootListMovies>
+      </BoxListMovies>
     </>
   );
 }
