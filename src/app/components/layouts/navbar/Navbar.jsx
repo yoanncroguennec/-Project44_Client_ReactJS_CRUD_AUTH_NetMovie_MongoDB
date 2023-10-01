@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Box, Button, Menu, MenuItem, Typography, styled } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Typography, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import { UserLocationIP_AddressAndLocalTimeDate } from "../../utils";
 import DropdownNavbar from "../dropdown/dropdownNavbar/DropdownNavbar";
@@ -7,29 +7,9 @@ import DropdownNavbar from "../dropdown/dropdownNavbar/DropdownNavbar";
 
 //////////////////// STYLES ////////////////////
 const RootNavbar = styled(Box)(({ theme }) => ({
-  alignItems: "center",
-  color: "white",
-  display: "flex",
-  flexWrap: "nowrap",
-  height: " 100px",
-  justifyContent: "space-between",
-  position: "fixed",
-  top: "0",
-  width: "100%",
-  zIndex: "999",
+
   [theme.breakpoints.down("sm")]: {},
 }));
-
-const styleLink = {
-  color: "#FFF",
-  cursor: "pointer",
-  display: "flex",
-  flexWrap: "nowrap",
-  marginRight: "20px",
-  marginLeft: "55px",
-  textDecoration: "none",
-  textShadow: "1px 1px 1px #000, 3px 3px 5px blue",
-};
 
 
 export default function Navbar({ id_Of_ConnectedUser, token, handleTokenAndId }) {

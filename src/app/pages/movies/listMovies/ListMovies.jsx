@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Typography } from "@mui/material";
-import { Featured } from "../../../components/common";
+import { Featured, List } from "../../../components/common";
 
 export default function ListMovies() {
   const [lists, setLists] = useState([]);
@@ -22,9 +21,16 @@ export default function ListMovies() {
 
 
   return (
-    <div style={{ display: "flex", flexDirection: "column" }}>
-      <Featured />
-      <Typography style={{ color: "red"}}>vvvvvvvv</Typography>
+    <div style={{ display: "flex", flexDirection: "column", width: "100vw" }}>
+      <div>
+        {/* <Banner /> */}
+        <Featured />
+      </div>
+      <div>
+        {lists.map((list) => (
+          <List list={list} />
+        ))}
+      </div>
     </div>
   );
 }

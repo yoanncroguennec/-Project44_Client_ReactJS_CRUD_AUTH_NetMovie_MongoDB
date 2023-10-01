@@ -12,9 +12,7 @@ import {
   AccordionDetails,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import {
-  BsFillInfoCircleFill,
-} from "react-icons/bs";
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;
@@ -59,12 +57,12 @@ export default function PopupConfidentiality_DropdownNavbar() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography>
-                Nous recueillons et stockons dans notre base de données, votre
-                adresse IP de votre appareil (Ordinateur, tablette,
-                télévision...), lors de votre inscription sur notre site
-                internet, mais également lors de votre connexion, afin de
-                sécurisé le site internet mais également pour le confort de tous
-                les utilisateurs du site.
+                Nous recueillons et stockons dans notre base de données,
+                l'adresse IP de votre appareil (Ordinateur, tablette,
+                télévision...). Ceci dès lors de votre inscription sur notre
+                site internet, mais également au moment de votre connexion, afin
+                de sécuriser le site internet. Cette action est également
+                bénéfique pour le confort de tous les utilisateurs du site.
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -77,10 +75,20 @@ export default function PopupConfidentiality_DropdownNavbar() {
             >
               <Typography
                 align='center'
-                sx={{ color: "#F00020", fontWeight: "bold", display: "flex", justifyContent: "center", alignItems: "center" }}
+                sx={{
+                  color: "#F00020",
+                  fontWeight: "bold",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
                 variant='h6'
               >
-                <BsFillInfoCircleFill size={35} style={{ marginRight: "20px"}} />Note d'informations
+                <BsFillInfoCircleFill
+                  size={35}
+                  style={{ marginRight: "20px" }}
+                />
+                Note d'informations
               </Typography>
             </AccordionSummary>
             <AccordionDetails>

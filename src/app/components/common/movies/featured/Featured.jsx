@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import backgroundImage from "./home.jpg";
+
 import {
   Typography,
   useTheme,
@@ -122,35 +124,34 @@ export default function Featured() {
     setModalTheWholeMovie(false);
   }
 
-  const yyè = [
-    {
-      onAction: { OpenModalTrailer },
-      icon: <BsFillPlayFill size={sizeIcon} />,
-      text: "Bande-Annonce",
-    },
-    {
-      onAction: `${CloseModalInfosMovie}`,
-      icon: <BsInfoCircle size={sizeIcon} />,
-      text: "Infos",
-    },
-    {
-      onAction: { OpenModalTheWholeFilm },
-      icon: <BsFillPlayFill size={sizeIcon} />,
-      text: "Voir le film",
-    },
-  ];
-
   return (
     <div
       style={{
         backgroundImage: `url("${img}")`,
+        backgroundPosition: "center center",
+        backgroundSize: "cover",
+        color: "#FFF",
+        objectFit: "",
         height: "100vh",
         width: "100vw",
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        backgroundPosition: "center center",
+        filter: "brightness(60%)",
       }}
     >
-      <div>
+      {/* <img
+        src={img}
+        alt='background'
+        style={{
+          filter: "brightness(60%)",
+          backgroundPosition: "center center",
+          backgroundSize: "cover",
+          height: "100vh",
+          width: "100vw",
+        }}
+        className='background-image'
+      /> */}
+
+      <div style={{ position: "absolute", zIndex: 1 }}>
         {type && (
           <Dropdown className='uu'>
             <DropdownBtn
@@ -201,7 +202,7 @@ export default function Featured() {
             background: "rgba(0, 0, 0, 0.4)",
             borderRadius: "25px",
             padding: "50px",
-            width: "700px",
+            width: `${matches ? "450px" : "700px"}`,
           }}
         >
           <Typography

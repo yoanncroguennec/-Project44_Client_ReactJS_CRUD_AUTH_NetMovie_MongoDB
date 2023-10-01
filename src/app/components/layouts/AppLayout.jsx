@@ -68,6 +68,7 @@ export default function AppLayout({
           // justifyContent: "center",
           flexDirection: "column",
           height: "97vh",
+          width: "100vw"
           // marginTop: "70px",
         }}
       >
