@@ -6,9 +6,11 @@ import {
   ListMovieByCategory,
   ListMovies,
   Movie,
+  Login,
 } from "../pages";
 // Layouts
 import { AppLayout } from "../components/layouts";
+import Index from "../pages/movies/movie/Index";
 
 
 export default function Router() {
@@ -66,10 +68,10 @@ export default function Router() {
           element: <ListMovieByCategory />,
         },
         // ///////// AUTH
-        // {
-        //   path: "auth/login",
-        //   element: <Login handleTokenAndId={handleTokenAndId} />,
-        // },
+        {
+          path: "auth/login",
+          element: <Login handleTokenAndId={handleTokenAndId} />,
+        },
         // {
         //   path: "auth/myProfile",
         //   element: (

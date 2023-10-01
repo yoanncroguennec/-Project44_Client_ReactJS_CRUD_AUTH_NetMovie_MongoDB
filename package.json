@@ -29,10 +29,12 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.7.5",
     "react-simple-carousel-image-slider": "^1.1.1",
+    "react-slick": "^0.29.0",
     "react-spinners": "^0.13.8",
     "react-spring": "^9.7.2",
     "react-transition-group": "^4.4.5",
     "sass": "^1.68.0",
+    "slick-carousel": "^1.8.1",
     "styled-components": "^6.0.8",
     "web-vitals": "^2.1.4"
   },

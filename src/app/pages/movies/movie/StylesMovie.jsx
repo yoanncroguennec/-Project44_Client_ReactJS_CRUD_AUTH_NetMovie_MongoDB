@@ -23,3 +23,16 @@ export const StylesTrailer = {
   border: "3px solid #FFF",
   margin: "0 auto",
 };
+
+export const BoxTrailer_MovieLink = styled(Box)(({ theme }) => ({
+  alignItems: "center",
+  display: "flex",
+  flexWrap: "nowrap",
+  justifyContent: "space-between",
+  marginTop: "55px",
+  [theme.breakpoints.down("sm")]: {
+    display: "flex",
+    flexDirection: "column",
+    // width: "70%",
+  },
+}));

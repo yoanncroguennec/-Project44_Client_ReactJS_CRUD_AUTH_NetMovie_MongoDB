@@ -19,7 +19,6 @@ export default function ListMovies() {
     getLists();
   }, []);
 
-
   return (
     <div style={{ display: "flex", flexDirection: "column", width: "100vw" }}>
       <div>

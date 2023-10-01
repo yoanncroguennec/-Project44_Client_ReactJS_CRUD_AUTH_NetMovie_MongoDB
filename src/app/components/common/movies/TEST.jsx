@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
 
-export default function TEST({ index, item }) {
+export default function TEST({ item }) {
   const [movie, setMovie] = useState({});
 
   useEffect(() => {

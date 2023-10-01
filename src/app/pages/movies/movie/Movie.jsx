@@ -1,21 +1,27 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import Iframe from "react-iframe";
 // STYLES
 import {
   BoxListMovies,
-  RootListMovies,
   TypoTitle,
   BoxNoDescription,
   StylesTrailer,
+  BoxTrailer_MovieLink,
 } from "./StylesMovie";
-import { Typography, useTheme, useMediaQuery, styled, Box } from "@mui/material";
+import {
+  Typography,
+  useTheme,
+  useMediaQuery,
+  styled,
+  Box,
+} from "@mui/material";
 import BooleanIfMovieViewed_Rating from "../../../components/common/movies/BooleanIfMovieViewed_Rating";
 // import { BoxMovieGenre } from "../../../components/common";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BreadcrumbsMovie } from "../../../components/utils";
-import VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm from "./VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm";
+// import VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm from "./VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm";
 
 export default function Movie({ token, id_Of_ConnectedUser }) {
   const params = useParams();
@@ -78,7 +84,9 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
       display: "block",
     },
     [theme.breakpoints.down("sm")]: {
-      width: "70%",
+      display: "flex",
+      flexDirection: "column",
+      // width: "70%",
     },
   }));
 
@@ -136,15 +144,7 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
             // style={{ fontSize: "18px", marginBottom: "15px" }}
           />
 
-          <div
-            style={{
-              alignItems: "center",
-              display: "flex",
-              flexWrap: "nowrap",
-              justifyContent: "space-between",
-              marginTop: "55px",
-            }}
-          >
+          <BoxTrailer_MovieLink>
             <ReactPlayer
               url={trailer}
               playing={false}
@@ -158,18 +158,18 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
               ? `Société de Production : ${production_company}`
               : ""}
 
-            <VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm
+            {/* <VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm
               id_Of_ConnectedUser={id_Of_ConnectedUser}
-            />
+            /> */}
             {token ? (
               movieLink ? (
                 <Iframe
                   url={movieLink}
-                  width='550px'
-                  height='320px'
+                  // width='550px'
+                  // height='320px'
                   display='block'
                   position='relative'
-                  styles={{ margin: "0 auto" }}
+                  styles={{ margin: "0 auto", height: "320px", width: "350px" }}
                 />
               ) : (
                 <Typography>Désolé, pas de lien du Film 😥</Typography>
@@ -177,7 +177,7 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
             ) : (
               <></>
             )}
-          </div>
+          </BoxTrailer_MovieLink>
         </RootListMovies>
       </BoxListMovies>
     </>
