@@ -37,7 +37,7 @@ export default function ItemListSliderCategoryListMovies({ item }) {
   return (
     <Link key={movie._id} to={`../movies/${movie._id}`}>
       <RootItemListSliderCategoryListMovies>
-        <NameMovieItem style={{}} variant={matches ? "string" : "body2"}>
+        <NameMovieItem variant={matches ? "string" : "body2"}>
           {movie.name}
         </NameMovieItem>
         <img alt={movie.name} src={movie.img} style={StylesImgItem} />

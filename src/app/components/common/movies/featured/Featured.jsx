@@ -19,7 +19,8 @@ import {
 } from "../../../../utils/assets/icons";
 // STYLES
 import { BoxActiveDropdown, BoxBGTitleDescBtnsMovieRandom, BoxFeatured, BoxIconBtn, BoxThreeBtns, Dropdown, DropdownBtn, DropdownItem, RootFeatured, StylesThreeBtns, TypoNameMovieRandom } from "./StylesFeatured";
-const sizeIcon = 35;
+const sizeIconDesktop = 35;
+const sizeIconMobile = 20;
 
 export default function Featured() {
   //////////////////// DROPDOWN CATEGORIES ////////////////////
@@ -89,17 +90,21 @@ export default function Featured() {
   const dataThreeBtns = [
     {
       onClickAction: OpenModalTrailer,
-      icon: <BsFillPlayFill size={sizeIcon} />,
+      icon: (
+        <BsFillPlayFill size={matches ? sizeIconMobile : sizeIconDesktop} />
+      ),
       title: "Bande-Annonce",
     },
     {
       onClickAction: CloseModalInfosMovie,
-      icon: <BsInfoCircle size={sizeIcon} />,
+      icon: <BsInfoCircle size={matches ? sizeIconMobile : sizeIconDesktop} />,
       title: "Infos",
     },
     {
       onClickAction: OpenModalTheWholeFilm,
-      icon: <BsFillPlayFill size={sizeIcon} />,
+      icon: (
+        <BsFillPlayFill size={matches ? sizeIconMobile : sizeIconDesktop} />
+      ),
       title: "Voir le film",
     },
   ];
@@ -156,8 +161,10 @@ export default function Featured() {
                   onClick={onClickAction}
                   style={StylesThreeBtns}
                 >
-                  <BoxIconBtn>{icon}</BoxIconBtn>
-                  <Typography>{title}</Typography>
+                  <BoxIconBtn matches={matches}>{icon}</BoxIconBtn>
+                  <Typography variant={matches ? "caption" : "body2"}>
+                    {title}
+                  </Typography>
                 </motion.div>
               </>
             ))}

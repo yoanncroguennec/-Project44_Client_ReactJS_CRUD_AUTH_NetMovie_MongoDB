@@ -6,7 +6,9 @@ import "moment/locale/fr";
 import { FormatLocalTime } from "../../utils/functions";
 var now = moment();
 
-export default function UserLocationIP_AddressAndLocalTimeDate({ id_Of_ConnectedUser }) {
+export default function UserLocationIP_AddressAndLocalTimeDate({
+  id_Of_ConnectedUser,
+}) {
   //////////////////// RESPONSIVE ////////////////////
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
@@ -75,9 +77,18 @@ export default function UserLocationIP_AddressAndLocalTimeDate({ id_Of_Connected
       {/* <Typography sx={{ fontWeight: "bold" }} variant='body1'>
         IPV4 : {dataInformationLocationConnectedUser.IPv4} / {ipv4}
       </Typography> */}
-      <Typography sx={{ fontWeight: "bold" }} variant={matches ? "body2" : "h6"}>
-        {moment(now).format("dddd DD MMMM YYYY")} /{" "}
-        {FormatLocalTime(currentDate)}
+
+      <Typography
+        sx={{ fontWeight: "bold" }}
+        variant={matches ? "body2" : "h6"}
+      >
+        {/* CONDITION RESPONSIVE DATE */}
+        {matches
+          ? `${moment(now).format("L")}`
+          : `${moment(now).format("dddd DD MMMM YYYY")}`}
+
+          {/* SUITE DU CODE APRES LA SORTIE DE LA CONDITION DATE */}
+        / {FormatLocalTime(currentDate)}
       </Typography>
       {/* <Typography sx={{ fontWeight: "bold" }} variant='body1'>
         {id_Of_ConnectedUser}

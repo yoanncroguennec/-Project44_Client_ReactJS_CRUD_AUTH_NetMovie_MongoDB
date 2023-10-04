@@ -1,29 +1,40 @@
 import React, { useState } from "react";
-import { Box, Typography, styled } from "@mui/material";
+import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { UserLocationIP_AddressAndLocalTimeDate } from "../../utils";
 import DropdownNavbar from "../dropdown/dropdownNavbar/DropdownNavbar";
+import { GiHamburgerMenu } from "react-icons/gi";
+import {
+  Typo_FirstLetter_Logo,
+  Typo_SecondLetter_Logo,
+  Typo_ThirdLetter_Logo,
+  Typo_FourthLetter_Logo,
+  Typo_FifthLetter_Logo,
+  Typo_SixthLetter_Logo,
+  Typo_SeventhLetter_Logo,
+  Typo_EighthLetter_Logo,
+} from "./StylesNavbar";
 
+export default function Navbar({
+  id_Of_ConnectedUser,
+  token,
+  handleTokenAndId,
+}) {
+  //////////////////// RESPONSIVE ////////////////////
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("md"));
 
-//////////////////// STYLES ////////////////////
-const RootNavbar = styled(Box)(({ theme }) => ({
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  [theme.breakpoints.down("sm")]: {},
-}));
-
-
-export default function Navbar({ id_Of_ConnectedUser, token, handleTokenAndId }) {
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    window.onscroll = () => {
-      setIsScrolled(window.pageYOffset === 0 ? false : true);
-      return () => (window.onscroll = null);
-    };
+  window.onscroll = () => {
+    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    return () => (window.onscroll = null);
+  };
 
   return (
     <div className={`nav ${isScrolled && "navbarBlack"}`}>
       <Link
-        to='/'
+        to='featured_SliderCategoryListMovies'
         style={{
           alignItems: "center",
           justifyContent: "center",
@@ -32,59 +43,14 @@ export default function Navbar({ id_Of_ConnectedUser, token, handleTokenAndId })
         }}
       >
         {" "}
-        <Typography
-          sx={{ color: "#F00", fontWeight: "bold", fontSize: "35px" }}
-          variant=''
-        >
-          N
-        </Typography>
-        <Typography
-          sx={{ color: "#F00", fontWeight: "bold", fontSize: "31px" }}
-          variant=''
-        >
-          E
-        </Typography>{" "}
-        <Typography
-          sx={{
-            color: "#F00",
-            fontWeight: "bold",
-            fontSize: "27px",
-            marginRight: "15px",
-          }}
-          variant=''
-        >
-          T
-        </Typography>
-        <Typography
-          sx={{ color: "#F00", fontWeight: "bold", fontSize: "23px" }}
-          variant=''
-        >
-          M
-        </Typography>
-        <Typography
-          sx={{ color: "#F00", fontWeight: "bold", fontSize: "23px" }}
-          variant=''
-        >
-          O
-        </Typography>{" "}
-        <Typography
-          sx={{ color: "#F00", fontWeight: "bold", fontSize: "27px" }}
-          variant=''
-        >
-          V
-        </Typography>
-        <Typography
-          sx={{ color: "#F00", fontWeight: "bold", fontSize: "31px" }}
-          variant=''
-        >
-          I
-        </Typography>{" "}
-        <Typography
-          sx={{ color: "#F00", fontWeight: "bold", fontSize: "35px" }}
-          variant=''
-        >
-          E
-        </Typography>{" "}
+        <Typo_FirstLetter_Logo matches={matches}>N</Typo_FirstLetter_Logo>
+        <Typo_SecondLetter_Logo matches={matches}>E</Typo_SecondLetter_Logo>
+        <Typo_ThirdLetter_Logo matches={matches}>T</Typo_ThirdLetter_Logo>
+        <Typo_FourthLetter_Logo matches={matches}>M</Typo_FourthLetter_Logo>
+        <Typo_FifthLetter_Logo matches={matches}>O</Typo_FifthLetter_Logo>
+        <Typo_SixthLetter_Logo matches={matches}>V</Typo_SixthLetter_Logo>
+        <Typo_SeventhLetter_Logo matches={matches}>I</Typo_SeventhLetter_Logo>
+        <Typo_EighthLetter_Logo matches={matches}>E</Typo_EighthLetter_Logo>
       </Link>
 
       <UserLocationIP_AddressAndLocalTimeDate
@@ -101,16 +67,17 @@ export default function Navbar({ id_Of_ConnectedUser, token, handleTokenAndId })
               background: "#333",
             },
           }}
-          variant='h6'
+          variant={matches ? "caption" : "h6"}
         >
           Tous les films
         </Typography>
       </Link>
-      <DropdownNavbar
+      <GiHamburgerMenu color='red' size={30} />
+      {/* <DropdownNavbar
         id_Of_ConnectedUser={id_Of_ConnectedUser}
         token={token}
         handleTokenAndId={handleTokenAndId}
-      />
+      /> */}
     </div>
   );
 }

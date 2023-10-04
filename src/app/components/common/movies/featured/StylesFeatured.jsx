@@ -72,8 +72,8 @@ export const DropdownItem = styled(Box)(({ theme }) => ({
 export const BoxBGTitleDescBtnsMovieRandom = styled(Typography)(({ matches }) => ({
   background: "rgba(0, 0, 0, 0.4)",
   borderRadius: "25px",
-  marginLeft: "45px",
-  padding: "50px",
+  marginLeft: `${matches ? "5px" : "45px"}`,
+  padding: `${matches ? "25px" : "50px"}`,
   width: `${matches ? "350px" : "700px"}`,
 }));
 
@@ -90,8 +90,8 @@ export const BoxThreeBtns = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
 }));
 
-export const BoxIconBtn = styled(Box)(({ theme }) => ({
-  marginRight: "15px",
+export const BoxIconBtn = styled(Box)(({ matches }) => ({
+  marginRight: `${matches ? "5px" : "15px"}`,
 }));
 
 export const StylesThreeBtns = {
