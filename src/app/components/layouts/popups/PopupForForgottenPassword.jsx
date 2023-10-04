@@ -7,11 +7,8 @@ import {
   DialogContent,
   DialogTitle,
   Slide,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// ICONS
 import { BsFillInfoCircleFill } from "react-icons/bs";
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -32,7 +29,7 @@ export default function PopupForForgottenPassword() {
   return (
     <div>
       <Typography onClick={handleClickOpen} variant='body2'>
-        Mot de passe oublié
+       <BsFillInfoCircleFill color="#F00"/>  Mot de passe oublié
       </Typography>
       <Dialog
         open={open}

@@ -11,7 +11,8 @@ import {
   AccordionSummary,
   AccordionDetails,
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// ICONS
+import { MdExpandMore } from "react-icons/md";
 import { BsFillInfoCircleFill } from "react-icons/bs";
 
 const Transition = forwardRef(function Transition(props, ref) {
@@ -49,9 +50,9 @@ export default function PopupConfidentiality_DropdownNavbar() {
           </Typography>
           <Accordion>
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel1a-content'
-              id='panel1a-header'
+              expandIcon={<MdExpandMore />}
+              // aria-controls='panel1a-content'
+              // id='panel1a-header'
             >
               <Typography>Quelles informations recueillons-nous ?</Typography>
             </AccordionSummary>
@@ -69,9 +70,9 @@ export default function PopupConfidentiality_DropdownNavbar() {
 
           <Accordion>
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
-              aria-controls='panel3a-content'
-              id='panel3a-header'
+              expandIcon={<MdExpandMore />}
+              // aria-controls='panel3a-content'
+              // id='panel3a-header'
             >
               <Typography
                 align='center'

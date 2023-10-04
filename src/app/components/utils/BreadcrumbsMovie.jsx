@@ -4,15 +4,15 @@ import {
   Link,
 } from "@mui/material";
 // ICONS
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { MdOutlineNavigateNext } from "react-icons/md";
 
 export default function BreadcrumbsMovie({ name }) {
   return (
     <Breadcrumbs
       aria-label='breadcrumbs'
       maxItems={3}
-      separator={<NavigateNextIcon fontSize='small' />}
-      style={{ marginLeft: "45px", marginTop: "80px"}}
+      separator={<MdOutlineNavigateNext />}
+      style={{ marginLeft: "45px", marginTop: "80px" }}
     >
       <Link href='/' underline='hover'>
         Accueil

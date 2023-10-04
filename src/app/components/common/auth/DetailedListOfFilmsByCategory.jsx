@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// ICONS
+import { MdExpandMore } from "react-icons/md";
 import {DetailedListOfFilmsByCategorySuite} from "..";
 
 export default function DetailedListOfFilmsByCategory() {
@@ -24,32 +25,38 @@ export default function DetailedListOfFilmsByCategory() {
   return (
     <div style={{ paddingRight: "150px" }}>
       {lists.map((list, index) => (
-          <Accordion key={index} sx={{ background: "transparent", width: "450px" }}>
-            <AccordionSummary
-              expandIcon={<ExpandMoreIcon sx={{ color: "#FFF" }} />}
-              style={{
-                background: "#000",
-                border: "2px solid #F00",
-                marginBottom: "15px",
-              }}
-            >
-              <Typography sx={{ color: "#FFF" }} variant='body1'>
-                {list.title}
-              </Typography>
-            </AccordionSummary>
-            <AccordionDetails
-              sx={{
-                background: "#FFF",
-                paddingTop: "50px",
-                height: "250px",
-                overflow: "scroll",
-              }}
-            >
-              {list.content.map((idMovie, index) => (
-                <DetailedListOfFilmsByCategorySuite key={index} idMovie={idMovie} />
-              ))}
-            </AccordionDetails>
-          </Accordion>
+        <Accordion
+          key={index}
+          sx={{ background: "transparent", width: "450px" }}
+        >
+          <AccordionSummary
+            expandIcon={<MdExpandMore />}
+            style={{
+              background: "#000",
+              border: "2px solid #F00",
+              marginBottom: "15px",
+            }}
+          >
+            <Typography sx={{ color: "#FFF" }} variant='body1'>
+              {list.title}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails
+            sx={{
+              background: "#FFF",
+              paddingTop: "50px",
+              height: "250px",
+              overflow: "scroll",
+            }}
+          >
+            {list.content.map((idMovie, index) => (
+              <DetailedListOfFilmsByCategorySuite
+                key={index}
+                idMovie={idMovie}
+              />
+            ))}
+          </AccordionDetails>
+        </Accordion>
       ))}
     </div>
   );
