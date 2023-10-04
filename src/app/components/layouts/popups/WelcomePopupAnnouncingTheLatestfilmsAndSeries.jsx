@@ -103,7 +103,7 @@ export default function WelcomePopupAnnouncingTheLatestfilmsAndSeries() {
                         button
                         // ATTENTION ! Laisser "component='a'", sinon le lien ne marche pas
                         component='a'
-                        href={`http://localhost:3000/movies/${_id}`}
+                        href={`movies/${_id}`}
                       >
                         <img src={img} alt={name} style={styleImgMovie} />
                         <ListItemText primary={name} secondary={actors} />
@@ -133,7 +133,7 @@ export default function WelcomePopupAnnouncingTheLatestfilmsAndSeries() {
           onClick={() => {
             setOpen(false);
           }}
-          href={`http://localhost:3000/featured_SliderCategoryListMovies`}
+          href={`featured_SliderCategoryListMovies`}
           variant='contained'
         >
           <TypoBtnCloseDialog>Accèdez aux films</TypoBtnCloseDialog>
