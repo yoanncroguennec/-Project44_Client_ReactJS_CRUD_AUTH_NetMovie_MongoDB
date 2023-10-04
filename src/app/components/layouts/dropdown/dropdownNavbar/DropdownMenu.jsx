@@ -5,10 +5,7 @@ import { CSSTransition } from "react-transition-group";
 import { BsFillInfoCircleFill, BsBook } from "react-icons/bs";
 import { FaArrowCircleLeft, FaUser } from "react-icons/fa";
 import { RiLogoutCircleRLine } from "react-icons/ri";
-import {
-  PopupConfidentiality_DropdownNavbar,
-  PopupAboutUs,
-} from "../../";
+import { PopupConfidentiality_DropdownNavbar, PopupAboutUs } from "../../";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -16,6 +13,8 @@ export default function DropdownMenu({
   token,
   handleTokenAndId,
   id_Of_ConnectedUser,
+  open,
+  setOpen,
 }) {
   const [activeMenu, setActiveMenu] = useState("main");
   const [menuHeight, setMenuHeight] = useState(null);
@@ -30,7 +29,7 @@ export default function DropdownMenu({
     setMenuHeight(height);
   }
 
-  const [open, setOpen] = useState(true);
+  // const [open, setOpen] = useState(true);
 
   //////////////////////// SECTION CHECK IF THE LOGGED IN USER IS ADMIN
   const [userInfosConnected, setUserInfosConnected] = useState([]);
@@ -51,15 +50,15 @@ export default function DropdownMenu({
     fetchData();
   }, [id_Of_ConnectedUser]);
 
-  const {
-    firstName,
-    lastName,
-    email,
-    sex,
-    admin,
-  } = userInfosConnected;
+  const { firstName, lastName, email, admin } = userInfosConnected;
+
+  function tt() {
+    setOpen(!open);
+    handleTokenAndId(null, null);
+  }
 
   function DropdownItem(props) {
+    console.log("props :", props);
     return (
       <a
         href='#'
@@ -74,17 +73,33 @@ export default function DropdownMenu({
   }
 
   return (
-    <div className='dropdown' style={{ height: menuHeight }} ref={dropdownRef}>
+    <div
+      className='dropdown'
+      style={{
+        background: "transparent",
+        border: "none",
+        height: "450px",
+        // height: menuHeight
+      }}
+      ref={dropdownRef}
+    >
+      {/* MENU DANS DROPDOWN */}
       <CSSTransition
         in={activeMenu === "main"}
         timeout={500}
         classNames='menu-primary'
         unmountOnExit
+        style={{
+          background: "yellow",
+          padding: "35px",
+          borderRadius: "25px",
+          height: "200px",
+        }}
         onEnter={calcHeight}
       >
         <div className='menu'>
           {!token ? (
-            <Link to='auth/login'>
+            <Link to='auth/login' onClick={() => setOpen(!open)}>
               <DropdownItem leftIcon={<FaUser />}>Se connecter</DropdownItem>
             </Link>
           ) : (
@@ -102,10 +117,12 @@ export default function DropdownMenu({
           ) : (
             <DropdownItem leftIcon={<RiLogoutCircleRLine />} rightIcon=''>
               <Button
-                onClick={() => {
-                  // Cookies.remove("token, i");
-                  handleTokenAndId(null, null);
-                }}
+                onClick={tt}
+                // onClick={() => setOpen(!open)}
+                // onClick={() => {
+                // // Cookies.remove("token, i");
+                // handleTokenAndId(null, null);
+                // }}
                 style={{ color: "#FFF" }}
               >
                 Déconnexion
@@ -114,12 +131,18 @@ export default function DropdownMenu({
           )}
         </div>
       </CSSTransition>
-
+      {/* SOUS-ENFANTS DU MENU DANS DROPDOWN */}
       <CSSTransition
         in={activeMenu === "settings"}
         timeout={500}
         classNames='menu-secondary'
         unmountOnExit
+        style={{
+          background: "green",
+          borderRadius: "25px",
+          padding: "35px",
+          height: "400px",
+        }}
         onEnter={calcHeight}
       >
         <div className='menu'>
@@ -142,7 +165,7 @@ export default function DropdownMenu({
             Standards de la communauté et mentions légales
           </Typography>
 
-          <DropdownItem leftIcon={<BsBook />} onClick={() => setOpen(!open)}>
+          <DropdownItem leftIcon={<BsBook />}>
             <PopupConfidentiality_DropdownNavbar />
           </DropdownItem>
           <DropdownItem leftIcon={<BsFillInfoCircleFill />}>
@@ -150,11 +173,16 @@ export default function DropdownMenu({
           </DropdownItem>
         </div>
       </CSSTransition>
-
       <CSSTransition
         in={activeMenu === "animals"}
         timeout={500}
         classNames='menu-secondary'
+        style={{
+          background: "blue",
+          borderRadius: "25px",
+          height: "200px",
+          padding: "25px",
+        }}
         unmountOnExit
         onEnter={calcHeight}
       >

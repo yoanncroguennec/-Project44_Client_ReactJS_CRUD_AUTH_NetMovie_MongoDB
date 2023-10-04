@@ -15,6 +15,7 @@ import MoonLoader from "react-spinners/MoonLoader";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
+import PopupForForgottenPassword from "../../../components/layouts/popups/PopupForForgottenPassword";
 const colorIcon = "#FFF";
 const sizeIcon = 35;
 
@@ -238,7 +239,7 @@ export default function Login({ setUser, handleTokenAndId }) {
               </button>
             )}
             <br />
-            <a href='#'>Mot de passe oublié</a>
+            <PopupForForgottenPassword />
           </form>
         </div>
       </div>

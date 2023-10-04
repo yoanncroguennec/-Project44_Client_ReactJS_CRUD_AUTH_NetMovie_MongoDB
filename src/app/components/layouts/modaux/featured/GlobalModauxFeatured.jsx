@@ -1,4 +1,6 @@
+// LAYOUTS
 import { ModalPlayerTrailer, ModalInfosMovie, ModalTheWholeFilm } from "../../index"
+
 export default function GlobalModauxFeatured({
   randomMovie,
   /// TRAILER

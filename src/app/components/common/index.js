@@ -1,5 +1,18 @@
 import Featured from "./movies/featured/Featured";
 import BooleanIfMovieViewed_Rating from "./movies/BooleanIfMovieViewed_Rating";
-import List from "./movies/List";
+import ListSliderCategoryListMovies from "./movies/listSliderCategoryListMovies/ListSliderCategoryListMovies";
+import DetailedListOfFilmsByCategory from "./auth/DetailedListOfFilmsByCategory";
+import DetailedListOfFilmsByCategorySuite from "./auth/DetailedListOfFilmsByCategorySuite";
+import CommonAdminUserList from "./admin/userList/CommonAdminUserList";
+import ItemListSliderCategoryListMovies from "./movies/listSliderCategoryListMovies/itemListSliderCategoryListMovies/ItemListSliderCategoryListMovies";
 
-export { Featured, BooleanIfMovieViewed_Rating, List };
+
+export {
+  Featured,
+  BooleanIfMovieViewed_Rating,
+  ListSliderCategoryListMovies,
+  DetailedListOfFilmsByCategory,
+  DetailedListOfFilmsByCategorySuite,
+  CommonAdminUserList,
+  ItemListSliderCategoryListMovies,
+};

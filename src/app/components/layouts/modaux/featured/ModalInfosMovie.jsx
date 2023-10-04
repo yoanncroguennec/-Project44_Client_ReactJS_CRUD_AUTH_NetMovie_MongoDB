@@ -6,8 +6,8 @@ import {
   useTheme,
 } from "@mui/material";
 // ICONS
-import { AiOutlineClose } from "react-icons/ai";
-import { BsFillPlayFill } from "react-icons/bs";
+import { AiOutlineClose, BsFillPlayFill } from "../../../../utils/assets/icons";
+// STYLES
 import {
   BoxModalInfosMovie,
   StylesTypoDesc,

@@ -1,18 +1,29 @@
+// LAYOUTS
+import AppLayout from "./AppLayout";
+import AdminLayout from "./AdminLayout";
+// MODAUX
 import GlobalModauxFeatured from "./modaux/featured/GlobalModauxFeatured";
 import ModalInfosMovie from "./modaux/featured/ModalInfosMovie";
 import ModalPlayerTrailer from "./modaux/featured/ModalPlayerTrailer";
 import ModalTheWholeFilm from "./modaux/featured/ModalTheWholeFilm";
-import AppLayout from "./AppLayout";
+// NAVBAR
 import Navbar from "./navbar/Navbar";
+// DRAWER
+import DrawerNavigationAdmin from "./drawer/DrawerNavigationAdmin";
+// DROPDOWN
 import DropdownNavbar from "./dropdown/dropdownNavbar/DropdownNavbar";
 import DropdownMenu from "./dropdown/dropdownNavbar/DropdownMenu";
-import NavItem from "./dropdown/dropdownNavbar/NavItem";
-import DrawerNavigationAdmin from "./drawer/DrawerNavigationAdmin";
+// POPUPS
 import PopupAboutUs from "./popups/PopupAboutUs";
 import PopupConfidentiality_DropdownNavbar from "./popups/PopupConfidentiality_DropdownNavbar";
+import WelcomePopupAnnouncingTheLatestfilmsAndSeries from "./popups/WelcomePopupAnnouncingTheLatestfilmsAndSeries";
+//// A CLASSER
+import NavItem from "./dropdown/dropdownNavbar/NavItem";
+
 
 export {
   AppLayout,
+  AdminLayout,
   Navbar,
   DropdownNavbar,
   DropdownMenu,
@@ -24,4 +35,5 @@ export {
   ModalTheWholeFilm,
   PopupAboutUs,
   PopupConfidentiality_DropdownNavbar,
+  WelcomePopupAnnouncingTheLatestfilmsAndSeries,
 };

@@ -3,13 +3,21 @@ import { useRoutes } from "react-router-dom";
 import Cookies from "js-cookie";
 // PAGES
 import {
-  ListMovieByCategory,
-  ListMovies,
+  Page_Featured_And_SliderCategoryListMovies,
   Movie,
+  ListMovieByCategory,
   Login,
+  Home,
+  AdministratorSide_UserLists,
+  Admin_NewMovie,
+  Admin_ListMovie,
+  Admin_NewCategoryListMovie,
+  Admin_CategoryListMovie,
+  ListAllMovies,
 } from "../pages";
 // Layouts
-import { AppLayout } from "../components/layouts";
+import { AdminLayout, AppLayout, WelcomePopupAnnouncingTheLatestfilmsAndSeries } from "../components/layouts";
+import NoLayout from "./NoLayout";
 
 
 export default function Router() {
@@ -40,6 +48,15 @@ export default function Router() {
   ///////// ROUTES
   let element = useRoutes([
     {
+      element: <Home />,
+      children: [
+        {
+          path: "/",
+          element: <WelcomePopupAnnouncingTheLatestfilmsAndSeries />,
+        },
+      ],
+    },
+    {
       element: (
         <AppLayout
           handleTokenAndId={handleTokenAndId}
@@ -55,7 +72,10 @@ export default function Router() {
         ///////// HOME
         // { path: "/", element: <Home /> },
         ///////// MOVIES
-        { path: "/", element: <ListMovies /> },
+        {
+          path: "/featured_SliderCategoryListMovies",
+          element: <Page_Featured_And_SliderCategoryListMovies />,
+        },
         {
           path: "movies/:id",
           element: (
@@ -63,7 +83,11 @@ export default function Router() {
           ),
         },
         {
-          path: "movies/listMovieByCategory",
+          path: "movies/listAllMovies",
+          element: <ListAllMovies />,
+        },
+        {
+          path: "featured_SliderCategoryListMovies/movies/listMovieByCategory",
           element: <ListMovieByCategory />,
         },
         // ///////// AUTH
@@ -84,45 +108,54 @@ export default function Router() {
         // ///////// RADIO / MUSICS
         // { path: "liveRadio", element: <LiveRadio token={token} /> },
         // ///////// WEATHER
-
-        // //////////////////////////////////////////////////////////
-        // ///////////////////// ADMINISTRATOR //////////////////////
-        // //////////////////////////////////////////////////////////
-
-        // ///////// ADMIN USERS LIST + SIGNIN
-        // {
-        //   path: "admin/administratorSide_UserLists",
-        //   element: <AdministratorSide_UserLists token={token} />,
-        // },
-        // {
-        //   path: "admin/auth/signup",
-        //   element: <Signup token={token} handleTokenAndId={handleTokenAndId} />,
-        // },
-        // ///////// LIST MOVIES + CRUD MOVIES
-        // {
-        //   path: "admin/administratorListmovie",
-        //   element: <Admin_ListMovie token={token} />,
-        // },
-        // {
-        //   path: "admin/auth/newMovie",
-        //   element: <Admin_NewMovie token={token} />,
-        // },
-        // ///////// CATEGORY LIST MOVIES + CRUD CATEGORY LIST MOVIES
-        // {
-        //   path: "admin/admin_CategoryListMovie",
-        //   element: <Admin_CategoryListMovie token={token} />,
-        // },
-        // {
-        //   path: "admin/admin_NewCategoryListMovie",
-        //   element: <Admin_NewCategoryListMovie token={token} />,
-        // },
-
         //////////////////////////////////////////////////////////
         ////////////////////// UTILS PAGES ///////////////////////
         //////////////////////////////////////////////////////////
 
         ///////// PAGE ERROR + PAGE UNDER CONSTRUCTION
         // { path: "*", element: <PageError /> },
+      ],
+    },
+    {
+      element: (
+        <AdminLayout
+          handleTokenAndId={handleTokenAndId}
+          token={token}
+          id_Of_ConnectedUser={id_Of_ConnectedUser}
+        />
+      ),
+      children: [
+        // //////////////////////////////////////////////////////////
+        // ///////////////////// ADMINISTRATOR //////////////////////
+        // //////////////////////////////////////////////////////////
+
+        ///////// ADMIN USERS LIST + SIGNIN
+        {
+          path: "admin/administratorSide_UserLists",
+          element: <AdministratorSide_UserLists token={token} />,
+        },
+        // {
+        //   path: "admin/auth/signup",
+        //   element: <Signup token={token} handleTokenAndId={handleTokenAndId} />,
+        // },
+        // ///////// LIST MOVIES + CRUD MOVIES
+        {
+          path: "admin/administratorListmovie",
+          element: <Admin_ListMovie token={token} />,
+        },
+        {
+          path: "admin/auth/newMovie",
+          element: <Admin_NewMovie token={token} />,
+        },
+        ///////// CATEGORY LIST MOVIES + CRUD CATEGORY LIST MOVIES
+        {
+          path: "admin/admin_CategoryListMovie",
+          element: <Admin_CategoryListMovie token={token} />,
+        },
+        {
+          path: "admin/admin_NewCategoryListMovie",
+          element: <Admin_NewCategoryListMovie token={token} />,
+        },
       ],
     },
   ]);

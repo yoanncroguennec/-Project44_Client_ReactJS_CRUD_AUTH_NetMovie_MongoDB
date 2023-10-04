@@ -3,7 +3,7 @@ import ReactPlayer from "react-player";
 // STYLES
 import { BoxModalPlayerTrailer } from "./StylesModalPlayerTrailer";
 // ICONS
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "../../../../utils/assets/icons";
 
 export default function ModalPlayerTrailer({
   // Props
@@ -17,8 +17,6 @@ export default function ModalPlayerTrailer({
     <Modal
       open={openModalTrailer}
       onClose={CloseModalTrailer}
-      // aria-labelledby='modal-modal-title'
-      // aria-describedby='modal-modal-description'
     >
       <BoxModalPlayerTrailer>
         <Typography align='center' variant='h4'>

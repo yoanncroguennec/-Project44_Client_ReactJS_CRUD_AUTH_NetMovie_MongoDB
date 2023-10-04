@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Box, styled } from "@mui/material";
-import {  Outlet } from "react-router-dom";
+import {  Link, Outlet } from "react-router-dom";
 import axios from "axios";
 // COMMON UTILS
 import {Navbar} from ".";
@@ -36,45 +36,66 @@ export default function AppLayout({
   token,
   id_Of_ConnectedUser,
 }) {
+  //////////////////////////// CURSOR
+  // "useRef" : Permet de faire référence à un élément DOM, dont il va retourner un objet modifiable dont la propriété "current" est initialiser avec l'argument fourni
+  let cursorRef = useRef();
+  function mousePosition(e) {
+    // Renvoit un objet nommé "cursorRef", possédant la "key" : "current", on rajoutte ".current"
+    // console.log(cursorRef.current);
+    // e get position cursor
+    // Exemples d'attribut ("rel", "href", "src")
+    cursorRef.current.setAttribute(
+      "style",
+      `top:${e.pageY - 20}px; left:${e.pageX - 20}px;`
+    );
+  }
+  function mouseClick() {
+    cursorRef.current.classList.add("expand");
+
+    setTimeout(() => {
+      cursorRef.current.classList.remove("expand");
+    }, 500);
+  }
+
   const [darkMode, setDarkMode] = useState(false);
 
-  const [obj, setObj] = useState({});
+  const [allMovies, setAllMovies] = useState([]);
 
   useEffect(() => {
     const getAllMovies = async () => {
       try {
         const url = `${process.env.REACT_APP_API_URL}/movies`;
         const { data } = await axios.get(url);
-        setObj(data);
+        setAllMovies(data.movies);
       } catch (err) {
         console.log(err);
       }
     };
 
     getAllMovies();
-  }, [obj]);
+  }, [allMovies]);
 
   return (
-    <>
+    <div ref={cursorRef}>
       <Navbar
         id_Of_ConnectedUser={id_Of_ConnectedUser}
         token={token}
         handleTokenAndId={handleTokenAndId}
       />
+
       <div
         style={{
-          background: "",
           display: "flex",
           // justifyContent: "center",
           flexDirection: "column",
           height: "97vh",
-          width: "100vw"
+          width: "100vw",
           // marginTop: "70px",
         }}
       >
         <Outlet
           context={[
-            obj,
+            allMovies,
             darkMode,
             id_Of_ConnectedUser,
             token,
@@ -82,6 +103,6 @@ export default function AppLayout({
           ]}
         />
       </div>
-    </>
+    </div>
   );
 }

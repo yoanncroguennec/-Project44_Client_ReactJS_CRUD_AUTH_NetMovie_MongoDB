@@ -90,6 +90,22 @@ export default function Navbar({ id_Of_ConnectedUser, token, handleTokenAndId })
       <UserLocationIP_AddressAndLocalTimeDate
         id_Of_ConnectedUser={id_Of_ConnectedUser}
       />
+      <Link to='movies/listAllMovies'>
+        <Typography
+          sx={{
+            border: "2px solid #F00",
+            borderRadius: "25px",
+            padding: "2px 15px",
+            cursor: "pointer",
+            "&:hover": {
+              background: "#333",
+            },
+          }}
+          variant='h6'
+        >
+          Tous les films
+        </Typography>
+      </Link>
       <DropdownNavbar
         id_Of_ConnectedUser={id_Of_ConnectedUser}
         token={token}

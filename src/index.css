@@ -2,8 +2,103 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* overflow-x: hidden; */
+    cursor: url("./stylesCursor.png"), auto;
 }
+
+/* 
+
+.box {
+    width: 200px;
+    height: 80px;
+    border-radius: 50px;
+    background: var(--accent);
+    cursor: pointer;
+} */
+
+
+
+/* STYLE SCROLLBAR */
+::-webkit-scrollbar {
+    background: #000;
+    width: 0.7em;
+}
+
+::-webkit-scrollbar-track {
+    background: #FFF;
+    border-radius: 100vw;
+    margin-block: 20em;
+    margin-left: 10em;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #F00;
+    border: 0.25em solid #F00;
+    /* height: 1em!important; */
+    border-radius: 100vw;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(120 100% 10% / 1);
+    border-radius: 100vw;
+}
+
+
+/***********************************/
+/* Parent Container */
+.content_img {
+    position: relative;
+    height: 30px;
+    /* width: 200px;
+    height: 200px; */
+    /* float: left; */
+    /* margin-right: 10px; */
+}
+
+/* Child Text Container */
+.content_img div {
+    position: absolute;
+    bottom: -50px;
+    /* bottom: 0;
+    right: 0; */
+    color: white;
+    /* margin-bottom: 5px; */
+    opacity: 0;
+    /* visibility: hidden;
+    -webkit-transition: visibility 0s, opacity 0.5s linear;
+    transition: visibility 0s, opacity 0.5s linear;
+    z-index: 1; */
+}
+.content_img:hover div {
+    border-radius: 50%;
+    width: 150px;
+    /* padding: 8px 15px; */
+    height: 150px;
+    /* z-index: 2; */
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Hover on Parent Container */
+/* .content_img:hover {
+    cursor: pointer;
+} */
+
+
+
+/* img {
+    display: none;
+    z-index: 9;
+}
+
+span:hover+img {
+    z-index: 999;
+    height: 115px;
+    width: 445px;
+    /* display: block; 
+} */
+
+
 .uu{
     /* display: inline-block; */
         /* float: right; */

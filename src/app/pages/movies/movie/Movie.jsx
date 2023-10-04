@@ -86,7 +86,7 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
     [theme.breakpoints.down("sm")]: {
       display: "flex",
       flexDirection: "column",
-      // width: "70%",
+      width: "80%",
     },
   }));
 
@@ -153,8 +153,8 @@ export default function Movie({ token, id_Of_ConnectedUser }) {
               playing={false}
               controls={true}
               height={250}
-              width={350}
-              style={{ width: `${matches ? "300px" : "500px"}` }}
+              width={matches ? "300px" : "350px"}
+              style={{ marginBottom: `${matches ? "30px" : "0"}` }}
             />
 
             {/* <VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm

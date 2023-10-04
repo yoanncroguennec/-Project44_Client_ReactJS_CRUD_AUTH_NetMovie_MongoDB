@@ -7,11 +7,7 @@ import {
   DialogContent,
   DialogTitle,
   Slide,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
 } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction='up' ref={ref} {...props} />;

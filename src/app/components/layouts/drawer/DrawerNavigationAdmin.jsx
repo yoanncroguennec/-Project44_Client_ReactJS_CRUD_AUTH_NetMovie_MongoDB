@@ -17,6 +17,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import { GrUserAdmin } from "react-icons/gr";
+import { itemDrawerNavigationAdmin } from "../../../utils/assets/data";
 
 export default function DrawerNavigationAdmin() {
   const [state, setState] = useState({
@@ -34,53 +35,6 @@ export default function DrawerNavigationAdmin() {
     setState({ ...state, [anchor]: open });
   };
 
-
-  const itemDrawerNavigationAdmin = [
-    {
-      icon: "",
-      text: "Nouvel utilisateur (Amis/Famille)",
-      tooltip: "Seulement Amis/Famille pour sécurisé",
-      url: "admin/auth/signup",
-    },
-    {
-      icon: "",
-      text: "Liste des Utilisateurs Inscrits",
-      tooltip: "Seulement Amis/Famille pour sécurisé",
-      url: "admin/administratorSide_UserLists",
-    },
-    {
-      icon: "",
-      text: "Nouveau film",
-      tooltip: "",
-      url: "admin/auth/newMovie",
-    },
-    {
-      icon: "",
-      text: "Liste des catégories de films",
-      tooltip: "",
-      url: "admin/admin_CategoryListMovie",
-    },
-    {
-      icon: "",
-      text: "Nouvelle catégorie de film",
-      tooltip: "",
-      url: "",
-    },
-    {
-      icon: "",
-      text: "",
-      tooltip: "",
-      url: "",
-    },
-    {
-      icon: "",
-      text: "",
-      tooltip: "",
-      url: "",
-    },
-  ];
-
-
   const list = (anchor) => (
     <Box
       className='testBg'
@@ -89,19 +43,31 @@ export default function DrawerNavigationAdmin() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <div style={{ background: "rgba(0, 0, 0, 0.5)", borderRadius: "15px", width: "80%", flexDirection: "column", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div
+        style={{
+          background: "rgba(0, 0, 0, 0.5)",
+          borderRadius: "15px",
+          width: "80%",
+          flexDirection: "column",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Typography>ADMINISTRATEUR</Typography>
         <List>
-          {itemDrawerNavigationAdmin.map(({ text, url, tooltip, icon }) => (
-            <ListItem key={text} disablePadding>
-              <Link to={url}>
-                <ListItemButton>
-                  <ListItemIcon>
-                    {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-                  </ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </Link>
+          {itemDrawerNavigationAdmin.map(({ text, url, tooltip, icon, index }) => (
+            <ListItem key={index} disablePadding>
+              <Tooltip title={tooltip}>
+                <Link to={url}>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
+                    </ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItemButton>
+                </Link>
+              </Tooltip>
             </ListItem>
           ))}
         </List>

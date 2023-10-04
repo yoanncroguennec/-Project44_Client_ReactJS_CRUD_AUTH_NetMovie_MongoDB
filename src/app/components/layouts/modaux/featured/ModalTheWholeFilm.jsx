@@ -1,7 +1,7 @@
 import { Box, Modal, Typography, styled } from "@mui/material";
 import Iframe from "react-iframe";
 // ICONS
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "../../../../utils/assets/icons";
 
 //////////////////// STYLES MODAL PLAYER ////////////////////
 const BoxModalPlayerTrailer = styled(Box)(({ theme }) => ({

@@ -4,7 +4,10 @@ export const BoxListMovies = styled(Box)(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  height: "100vh"
+  height: "100vh",
+  [theme.breakpoints.down("sm")]: {
+    margin: "250px 0",
+  },
 }));
 
 export const TypoTitle = styled(Typography)(({ theme }) => ({

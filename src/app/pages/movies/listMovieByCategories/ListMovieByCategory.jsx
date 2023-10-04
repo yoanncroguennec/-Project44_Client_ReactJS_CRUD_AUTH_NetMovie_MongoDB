@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Typography, useTheme, useMediaQuery } from "@mui/material";
-import BooleanIfMovieViewed_Rating from "../../../components/common/movies/BooleanIfMovieViewed_Rating";
+import { BooleanIfMovieViewed_Rating } from "../../../components/common";
 import { useLocation, Link } from "react-router-dom";
 // import { BoxMovieGenre } from "../../../components/common";
 // FUNCTIONS
@@ -20,15 +20,15 @@ export default function ListMovieByCategory() {
   const location = useLocation();
   const { movieCategory } = location.state || {};
 
-  const [data, setData] = useState([]);
+  const [moviesByGenre, setMoviesByGenre] = useState([]);
 
   useEffect(() => {
     const getAllMovies = async () => {
       try {
         const url = `${process.env.REACT_APP_API_URL}/movies/sortByMovieGenre?genre=${movieCategory}`;
         const { data } = await axios.get(url);
-        console.log("dataMovies :", data);
-        setData(data);
+        console.log("moviesByGenre :", data.movies);
+        setMoviesByGenre(data.movies);
       } catch (err) {
         console.log(err);
       }
@@ -59,9 +59,9 @@ export default function ListMovieByCategory() {
         {movieCategory}
       </Typography>
       <BoxListMovies style={{ marginTop: "150px" }}>
-        {data
+        {moviesByGenre
           // sortByAlphabeticalOrder
-          .sort((a, b) => (a.name > b.name ? 1 : -1))
+          // .sort((a, b) => (a.name > b.name ? 1 : -1))
           ?.map(
             ({
               _id,
@@ -76,8 +76,9 @@ export default function ListMovieByCategory() {
               img,
               year,
               rating,
+              index,
             }) => (
-              <Link key={_id} to={`../movies/${_id}`} style={styleLink}>
+              <Link key={index} to={`../movies/${_id}`} style={styleLink}>
                 <RootListMovies>
                   <img
                     alt='movie'
