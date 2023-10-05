@@ -4,7 +4,8 @@ import ReactPlayer from "react-player";
 import { useParams, Link } from "react-router-dom";
 import Iframe from "react-iframe";
 import { motion } from "framer-motion";
-import Fade from "react-reveal/Fade";
+import { Fade } from "react-awesome-reveal";
+// import Fade from "react-reveal/Fade";
 import {
   Typography,
   useTheme,
