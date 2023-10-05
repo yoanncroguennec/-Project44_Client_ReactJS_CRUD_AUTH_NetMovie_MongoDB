@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 // PAGES
 import {
   Page_Featured_And_SliderCategoryListMovies,
-  Movie,
+  Movie_By_ID,
   ListMovieByCategory,
   Login,
   Home,
@@ -16,7 +16,12 @@ import {
   ListAllMovies,
 } from "../pages";
 // Layouts
-import { AdminLayout, AppLayout, WelcomePopupAnnouncingTheLatestfilmsAndSeries } from "../components/layouts";
+import {
+  AdminLayout,
+  AppLayout,
+  WelcomePopupAnnouncingTheLatestfilmsAndSeries,
+  Movie_ID_Layout,
+} from "../components/layouts";
 import NoLayout from "./NoLayout";
 
 
@@ -76,12 +81,12 @@ export default function Router() {
           path: "/featured_SliderCategoryListMovies",
           element: <Page_Featured_And_SliderCategoryListMovies />,
         },
-        {
-          path: "movies/:id",
-          element: (
-            <Movie token={token} id_Of_ConnectedUser={id_Of_ConnectedUser} />
-          ),
-        },
+        // {
+        //   path: "movies/:id",
+        //   element: (
+        //     <Movie token={token} id_Of_ConnectedUser={id_Of_ConnectedUser} />
+        //   ),
+        // },
         {
           path: "movies/listAllMovies",
           element: <ListAllMovies />,
@@ -114,6 +119,20 @@ export default function Router() {
 
         ///////// PAGE ERROR + PAGE UNDER CONSTRUCTION
         // { path: "*", element: <PageError /> },
+      ],
+    },
+    {
+      element: <Movie_ID_Layout />,
+      children: [
+        {
+          path: "movies/:id",
+          element: (
+            <Movie_By_ID
+              token={token}
+              id_Of_ConnectedUser={id_Of_ConnectedUser}
+            />
+          ),
+        },
       ],
     },
     {

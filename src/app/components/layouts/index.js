@@ -1,6 +1,7 @@
 // LAYOUTS
 import AppLayout from "./AppLayout";
 import AdminLayout from "./AdminLayout";
+import Movie_ID_Layout from "./Movie_ID_Layout";
 // MODAUX
 import GlobalModauxFeatured from "./modaux/featured/GlobalModauxFeatured";
 import ModalInfosMovie from "./modaux/featured/ModalInfosMovie";
@@ -24,6 +25,7 @@ import NavItem from "./dropdown/dropdownNavbar/NavItem";
 export {
   AppLayout,
   AdminLayout,
+  Movie_ID_Layout,
   Navbar,
   DropdownNavbar,
   DropdownMenu,

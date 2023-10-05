@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Typography, useMediaQuery, useTheme } from "@mui/material";
+import { Box, Typography, styled, useMediaQuery, useTheme } from "@mui/material";
 import { Link } from "react-router-dom";
 import { UserLocationIP_AddressAndLocalTimeDate } from "../../utils";
 import DropdownNavbar from "../dropdown/dropdownNavbar/DropdownNavbar";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {
+  RootNavbar,
   Typo_FirstLetter_Logo,
   Typo_SecondLetter_Logo,
   Typo_ThirdLetter_Logo,
@@ -30,9 +31,10 @@ export default function Navbar({
     setIsScrolled(window.pageYOffset === 0 ? false : true);
     return () => (window.onscroll = null);
   };
+  
 
   return (
-    <div className={`nav ${isScrolled && "navbarBlack"}`}>
+    <RootNavbar isScrolled={isScrolled} matches={matches}>
       <Link
         to='featured_SliderCategoryListMovies'
         style={{
@@ -67,9 +69,9 @@ export default function Navbar({
               background: "#333",
             },
           }}
-          variant={matches ? "caption" : "h6"}
+          variant={matches ? "caption" : "h5"}
         >
-          Tous les films
+          {matches ? "Tous les <br/>films" : "Tous les films"}
         </Typography>
       </Link>
       <GiHamburgerMenu color='red' size={30} />
@@ -78,6 +80,6 @@ export default function Navbar({
         token={token}
         handleTokenAndId={handleTokenAndId}
       /> */}
-    </div>
+    </RootNavbar>
   );
 }

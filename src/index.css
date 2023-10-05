@@ -2,19 +2,139 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    cursor: url("./stylesCursor.png"), auto;
 }
 
-/* 
 
-.box {
-    width: 200px;
-    height: 80px;
-    border-radius: 50px;
-    background: var(--accent);
+/* ATTENTION ! NE PAS SUPPRIMER SINON LE BTN DE COMPONENT UTILS "BackToTop" NE FONCTIONNERA PAS */
+.ballBackToTop {
+    align-items: center;
+    animation: bounce 1s linear infinite;
+    border: 4px solid #F00;
+    border-radius: 50%;
+    bottom: 150px;
+    box-shadow: rgba(255, 0, 0, 0.5) 0px 10px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px,
+        rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px,
+        rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: flex;
+    height: 120px;
+    justify-content: center;
+    position: fixed;
+    right: 220px;
+    width: 120px;
+}
+
+.ballBackToTop:hover {
+    /* animation: bounce 87s infinite; */
+    animation: grow 1s infinite;
+    bottom: 150px;
     cursor: pointer;
+    height: 120px;
+    position: fixed;
+    transform: "";
+    right: 220px;
+    width: 120px;
+}
+
+@keyframes bounce {
+    10% {
+        height: 120px;
+        width: 120px;
+    }
+    30% {
+        height: 110px;
+        width: 110px;
+    }
+    50% {
+        height: 120px;
+        width: 120px;
+    }
+    75% {
+        height: 120px;
+        transform: translateY(100px);
+        width: 127px;
+    }
+    100% {
+        height: 120px;
+        transform: translateY(0px);
+        width: 120px;
+    }
+}
+
+@keyframes grow {
+    10% {
+        height: 120px;
+        width: 120px;
+    }
+    50% {
+        height: 150px;
+        width: 150px;
+    }
+    100% {
+        height: 120px;
+        transform: translateY(0px);
+        width: 120px;
+    }
+}
+
+
+
+
+
+
+/* 
+.slider {
+    height: 100vh;
+    background: red;
+    width: 100vw;
+}
+
+.slide-track {
+    background: blue;
+    display: flex;
+    width: calc(700px * 50);
+    animation: scroll 40s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-250px * -9));
+    }
+}
+
+.slide {
+    height: 450px;
+    width: 700px;
+    perspective: 100px;
 } */
 
+
+/***** GRADIENT SHADOWS *****/
+/* .slider::before,
+.slider::after {
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.slider::before {
+    left: 0;
+    top: 0;
+}
+
+.slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+ */
 
 
 /* STYLE SCROLLBAR */
@@ -69,6 +189,7 @@
     transition: visibility 0s, opacity 0.5s linear;
     z-index: 1; */
 }
+
 .content_img:hover div {
     border-radius: 50%;
     width: 150px;
@@ -99,20 +220,20 @@ span:hover+img {
 } */
 
 
-.uu{
+.uu {
     /* display: inline-block; */
-        /* float: right; */
-        height: 30px;
-        z-index: 999;
-        position: relative;
+    /* float: right; */
+    height: 30px;
+    z-index: 999;
+    position: relative;
 }
 
-
+/* 
 .nav{
     position: fixed;
-    top: 0;
-    background: rgba(0, 0, 0, .2);
-    /* background: rgba(255, 255, 255, 0.3); */
+    top: 0; */
+/* background: rgba(0, 0, 0, .2); */
+/* background: rgba(255, 255, 255, 0.3);
     width: 100vw;
     padding: 20px;
     height: 30px;
@@ -125,7 +246,7 @@ span:hover+img {
 .navbarBlack{
     background: #111;
     color: #FFF;
-}
+} */
 
 .dark-mode {
     background: black;
@@ -329,7 +450,7 @@ input {
     font-weight: 500;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
     transition: all .3s;
-    margin-bottom: 2em; 
+    margin-bottom: 2em;
 }
 
 input:hover,
@@ -349,4 +470,3 @@ input[type="button"] {
 ::placeholder {
     color: #fff;
 }
-

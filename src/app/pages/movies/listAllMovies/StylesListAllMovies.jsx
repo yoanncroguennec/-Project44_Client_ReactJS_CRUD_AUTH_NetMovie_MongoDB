@@ -1,5 +1,10 @@
 import { Box, Typography, styled } from "@mui/material";
 
+export const TypoTitlePage = styled(Typography)(({ theme }) => ({
+  marginTop: "150px",
+  textAlign: "center",
+}));
+
 export const BoxListMovies = styled(Box)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(2, minmax(0, 1fr))",

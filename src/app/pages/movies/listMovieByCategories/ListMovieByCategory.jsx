@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Typography, useTheme, useMediaQuery } from "@mui/material";
-import { BooleanIfMovieViewed_Rating } from "../../../components/common";
 import { useLocation, Link } from "react-router-dom";
 // import { BoxMovieGenre } from "../../../components/common";
-// FUNCTIONS
-import { TruncateDesc } from "../../../utils/functions"
+// COMPONENTS COMMON
+import { BooleanIfMovieViewed_Rating } from "../../../components/common";
+// COMPONENTS UTILS
+import {
+  LoaderSpinner,
+  ScrollIndicatorProgressBar,
+  BackToTop,
+} from "../../../components/utils";
 // STYLES
 import {
   BoxListMovies,
@@ -13,28 +18,34 @@ import {
   RootListMovies,
   TypoTitle,
   BoxNoDescription,
+  TypoTitlePage,
 } from "./StylesListMovieByCategory";
+// FUNCTIONS
+import { TruncateDesc } from "../../../utils/functions";
 
+//////////////////// EXPORT FUNCTION PAGE ////////////////////
 export default function ListMovieByCategory() {
   // STATES
   const location = useLocation();
   const { movieCategory } = location.state || {};
 
+  // GET API All MOVIES BY CATEGORY
   const [moviesByGenre, setMoviesByGenre] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const getAllMovies = async () => {
+    const getAllMoviesByCategory = async () => {
       try {
         const url = `${process.env.REACT_APP_API_URL}/movies/sortByMovieGenre?genre=${movieCategory}`;
         const { data } = await axios.get(url);
-        console.log("moviesByGenre :", data.movies);
+        console.log("data", data);
         setMoviesByGenre(data.movies);
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
     };
 
-    getAllMovies();
+    getAllMoviesByCategory();
   }, []);
 
   //////////////////// RESPONSIVE ////////////////////
@@ -53,12 +64,17 @@ export default function ListMovieByCategory() {
   };
 
   //////////////////// RETURN ////////////////////
-  return (
+  return loading ? (
+    <LoaderSpinner />
+  ) : (
     <>
-      <Typography align='center' variant='h4'>
-        {movieCategory}
-      </Typography>
-      <BoxListMovies style={{ marginTop: "150px" }}>
+      <ScrollIndicatorProgressBar />
+      <BackToTop />
+      <TypoTitlePage variant='h4'>
+        {movieCategory} / Nombres de films : {moviesByGenre.length}
+      </TypoTitlePage>
+
+      <BoxListMovies>
         {moviesByGenre
           // sortByAlphabeticalOrder
           // .sort((a, b) => (a.name > b.name ? 1 : -1))

@@ -3,7 +3,7 @@ import axios from "axios";
 import { Typography, useMediaQuery, useTheme } from "@mui/material";
 import moment from "moment";
 import "moment/locale/fr";
-import { FormatLocalTime } from "../../utils/functions";
+import { FormatLocalTime } from "../../../utils/functions";
 var now = moment();
 
 export default function UserLocationIP_AddressAndLocalTimeDate({
@@ -86,9 +86,8 @@ export default function UserLocationIP_AddressAndLocalTimeDate({
         {matches
           ? `${moment(now).format("L")}`
           : `${moment(now).format("dddd DD MMMM YYYY")}`}
-
-          {/* SUITE DU CODE APRES LA SORTIE DE LA CONDITION DATE */}
-        / {FormatLocalTime(currentDate)}
+        {/* SUITE DU CODE APRES LA SORTIE DE LA CONDITION DATE */}/{" "}
+        {FormatLocalTime(currentDate)}
       </Typography>
       {/* <Typography sx={{ fontWeight: "bold" }} variant='body1'>
         {id_Of_ConnectedUser}

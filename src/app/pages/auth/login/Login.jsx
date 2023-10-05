@@ -9,13 +9,13 @@ import {
   useTheme,
   Typography,
 } from "@mui/material";
-import MoonLoader from "react-spinners/MoonLoader";
 // import Loader from "react-loader-spinner";
 // ICONS
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import PopupForForgottenPassword from "../../../components/layouts/popups/PopupForForgottenPassword";
+import { LoaderSpinner } from "../../../components/utils";
 const colorIcon = "#FFF";
 const sizeIcon = 35;
 
@@ -204,15 +204,7 @@ export default function Login({ setUser, handleTokenAndId }) {
               {errorMessage}
             </Typography>
             {isLoading ? (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <MoonLoader color='#8b008b' size={55} />
-              </div>
+              <LoaderSpinner />
             ) : (
               <button
                 disabled={isLoading ? true : false}

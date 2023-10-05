@@ -1,55 +1,67 @@
 import { Typography, Box, styled } from "@mui/material";
 
-export const RootFeatured = styled(Box)(({  }) => ({
-
+export const RootNavbar = styled(Box)(({ isScrolled, matches }) => ({
+  alignItems: "center",
+  background: `${isScrolled ? "#111" : "rgba(0, 0, 0, .2)"}`,
+  // background: "rgba(255, 255, 255, 0.3)",
+  color: "#FFF",
+  display: "flex",
+  height: "70px",
+  justifyContent: "space-between",
+  padding: "20px",
+  position: "fixed",
+  top: "0",
+  width: "100vw",
+  zIndex: "99",
 }));
 
 export const Typo_FirstLetter_Logo = styled(Box)(({ matches }) => ({
   color: "#F00",
+  fontSize: `${matches ? "27px" : "35px"}`,
   fontWeight: "bold",
-  fontSize: `${matches ? "30px" : "35px"}`,
 }));
 
 export const Typo_SecondLetter_Logo = styled(Box)(({ matches }) => ({
   color: "#F00",
+  fontSize: `${matches ? "23px" : "31px"}`,
   fontWeight: "bold",
-  fontSize: `${matches ? "26px" : "31px"}`,
 }));
 
 export const Typo_ThirdLetter_Logo = styled(Box)(({ matches }) => ({
   color: "#F00",
+  fontSize: `${matches ? "19px" : "27px"}`,
   fontWeight: "bold",
-  fontSize: `${matches ? "22px" : "27px"}`,
 }));
 
 export const Typo_FourthLetter_Logo = styled(Box)(({ matches }) => ({
   color: "#F00",
+  fontSize: `${matches ? "15px" : "23px"}`,
   fontWeight: "bold",
-  fontSize: `${matches ? "18px" : "23px"}`,
 }));
 
 export const Typo_FifthLetter_Logo = styled(Box)(({ matches }) => ({
   color: "#F00",
+  fontSize: `${matches ? "15px" : "23px"}`,
   fontWeight: "bold",
-  fontSize: `${matches ? "18px" : "23px"}`,
 }));
 
 export const Typo_SixthLetter_Logo = styled(Box)(({ matches }) => ({
   color: "#F00",
   fontWeight: "bold",
-  fontSize: `${matches ? "22px" : "27px"}`,
+  fontSize: `${matches ? "19px" : "27px"}`,
+  fontWeight: "bold",
 }));
 
 export const Typo_SeventhLetter_Logo = styled(Box)(({ matches }) => ({
   color: "#F00",
+  fontSize: `${matches ? "23px" : "31px"}`,
   fontWeight: "bold",
-  fontSize: `${matches ? "26px" : "31px"}`,
 }));
 
 export const Typo_EighthLetter_Logo = styled(Box)(({ matches }) => ({
   color: "#F00",
+  fontSize: `${matches ? "27px" : "35px"}`,
   fontWeight: "bold",
-  fontSize: `${matches ? "30px" : "35px"}`,
 }));
 
 // export const Typo_NinthLetter_Logo = styled(Box)(({ matches }) => ({

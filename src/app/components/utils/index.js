@@ -1,4 +1,19 @@
-import BreadcrumbsMovie from "./BreadcrumbsMovie";
-import UserLocationIP_AddressAndLocalTimeDate from "./UserLocationIP_AddressAndLocalTimeDate";
+import BreadcrumbsMovie from "./breadcrumbsMovie/BreadcrumbsMovie";
+import UserLocationIP_AddressAndLocalTimeDate from "./userLocationIP_AddressAndLocalTimeDate/UserLocationIP_AddressAndLocalTimeDate";
+import Pagination from "./pagination/Pagination";
+import ScrollIndicatorProgressBar from "./scrollIndicatorProgressBar/ScrollIndicatorProgressBar";
+import BackToTop from "./backToTop/BackToTop";
+import LoaderSpinner from "./loaderSpinner/LoaderSpinner";
+import BooleanIfMovieViewed_Rating from "./booleanIfMovieViewed_Rating/BooleanIfMovieViewed_Rating";
+import VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm from "./verificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm/VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm";
 
-export { BreadcrumbsMovie, UserLocationIP_AddressAndLocalTimeDate };
+export {
+  Pagination,
+  BreadcrumbsMovie,
+  UserLocationIP_AddressAndLocalTimeDate,
+  ScrollIndicatorProgressBar,
+  LoaderSpinner,
+  BackToTop,
+  BooleanIfMovieViewed_Rating,
+  VerificationThatItIsIndeedTheLoggedInUserWithThe_IP_AddressOfTheDeviceUsedByTheLoggedInPersonToWatchTheFilm,
+};

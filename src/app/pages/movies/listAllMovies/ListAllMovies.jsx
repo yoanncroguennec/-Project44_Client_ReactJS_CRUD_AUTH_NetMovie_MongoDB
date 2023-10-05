@@ -1,49 +1,53 @@
-import { Typography, useTheme, useMediaQuery, Button } from "@mui/material";
-import { useOutletContext, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Typography, useTheme, useMediaQuery } from "@mui/material";
+import axios from "axios";
+import { Link } from "react-router-dom";
+// COMPONENTS COMMON
 import { BooleanIfMovieViewed_Rating } from "../../../components/common";
-import { TruncateDesc } from "../../../utils/functions";
+// COMPONENTS UTILS
+import {
+  LoaderSpinner,
+  ScrollIndicatorProgressBar,
+  BackToTop,
+  Pagination,
+} from "../../../components/utils";
 // STYLES
 import {
+  TypoTitlePage,
   BoxListMovies,
   styleLink,
   RootListMovies,
   TypoTitle,
   BoxNoDescription,
 } from "./StylesListAllMovies";
-import { useEffect, useState } from "react";
-import axios from "axios";
+// FUNCTIONS
+import { TruncateDesc } from "../../../utils/functions";
 
-
-import Pagination from "./Pagination";
-
-
-
-
-
+//////////////////// EXPORT FUNCTION PAGE ////////////////////
 export default function ListAllMovies() {
-  const [allMovies] = useOutletContext();
-  console.log("allMovies", allMovies);
+  /// PAGINATION
+  const [countAllMovies, setCountAllMovies] = useState();
+  const [page, setPage] = useState(1);
+  const [limit] = useState(20);
 
-	const [page, setPage] = useState(1);
-
-  const [obj, setObj] = useState([]);
-
+  // GET API All MOVIES
+  const [allMovies, setAllMovies] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getAllMovies = async () => {
       try {
-        const url = `https://project44-reactjs-crud-auth-netmovie-mongodb.vercel.app/api/movies/allMoviesByCriteria?page=${page}`;
+        const url = `https://project44-reactjs-crud-auth-netmovie-mongodb.vercel.app/api/movies?page=${page}&limit=${limit}`;
         const { data } = await axios.get(url);
-        setObj(data.movies);
+        setAllMovies(data.movies);
+        setCountAllMovies(data.total);
+        setLoading(false);
       } catch (err) {
         console.log(err);
       }
     };
 
     getAllMovies();
-  }, [allMovies, page]);
-
-
-
+  }, [page, limit]);
 
   //////////////////// RESPONSIVE ////////////////////
   const theme = useTheme();
@@ -60,34 +64,24 @@ export default function ListAllMovies() {
     width: `${matches ? "100px" : "200px"}`,
   };
 
-  // const [currentPage, setPage] = useState(1)
-  // const [limit, setlimit] = useState(4)
-
-  // const lastPostIndex = currentPage * limit;
-  // const firstPostIndex = lastPostIndex - limit;
-  // const currentPosts = allMovies.slice(firstPostIndex, lastPostIndex)
-
-  //pageApi
-  const [pageApi, setPageApi] = useState(1);
-  //API
-  const [api, setApi] = useState([]);
-
-  return (
-    <>
-      <Typography>Nombres de films : {allMovies.lenght}</Typography>
-      <BoxListMovies style={{ marginTop: "150px" }}>
-        {/* {currentPage}
-        <Button onClick={() => setPage(currentPage - limit)}>moins</Button>
-        <Button onClick={() => setPage(currentPage + limit)}>plus</Button> */}
-ssssss
-        <Pagination
-          page={page}
-          // limit={obj.limit ? obj.limit : 0}
-          // total={obj.total ? obj.total : 0}
-          setPage={(page) => setPage(page)}
-        />ccccccccccc
-
-        {obj
+  //////////////////// RETURN ////////////////////
+  return loading ? (
+    <LoaderSpinner />
+  ) : (
+    <div>
+      <ScrollIndicatorProgressBar />
+      <BackToTop />
+      <TypoTitlePage variant='h4'>
+        Tous les films de Net Movie : {countAllMovies} films
+      </TypoTitlePage>
+      <Pagination
+        page={page}
+        countAllMovies={countAllMovies}
+        setPage={setPage}
+        limit={limit}
+      />
+      <BoxListMovies>
+        {allMovies
           // sortByAlphabeticalOrder
           // .sort((a, b) => (a.name > b.name ? 1 : -1))
           .map(
@@ -144,7 +138,13 @@ ssssss
               </Link>
             )
           )}
+        <Pagination
+          page={page}
+          countAllMovies={countAllMovies}
+          setPage={setPage}
+          limit={limit}
+        />
       </BoxListMovies>
-    </>
+    </div>
   );
 }

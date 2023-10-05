@@ -1,15 +1,30 @@
-import { Box, Rating, Tooltip } from "@mui/material";
-// ICONS
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { LiaEyeSolid, LiaEyeSlash } from "react-icons/lia";
+import { Rating, Tooltip, Typography } from "@mui/material";
+// UTILS DATA
 import { dataRatingLabels } from "../../../utils/assets/data";
+// STYLES
+import {
+  Root_BooleanIfMovieViewed_Rating,
+  TypoRating,
+} from "./StylesBooleanIfMovieViewed_Rating";
+// ICONS
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  LiaEyeSolid,
+  LiaEyeSlash,
+} from "../../../utils/assets/icons";
 const colorIcon = "#ce1957";
 const sizeIcon = 30;
 
-export default function BooleanIfMovieViewed_Rating({ rating, favorite, watch }) {
-
+////////////// EXPORT FUNCTION COMPONENT UTILS
+export default function BooleanIfMovieViewed_Rating({
+  rating,
+  favorite,
+  watch,
+}) {
   return (
-    <div>
+    <Root_BooleanIfMovieViewed_Rating>
+      {/* WATCH */}
       {watch ? (
         <Tooltip title='Vu'>
           <span>
@@ -44,7 +59,9 @@ export default function BooleanIfMovieViewed_Rating({ rating, favorite, watch })
         readOnly
         size='large'
       />
-      {rating !== null && <Box sx={{ ml: 2 }}>{dataRatingLabels[rating]}</Box>}
-    </div>
+      {rating !== null && (
+        <TypoRating variant='h5'>{dataRatingLabels[rating]}</TypoRating>
+      )}
+    </Root_BooleanIfMovieViewed_Rating>
   );
 }
